@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Borrowed Prints — Workshopcore — l15</title>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --yellow: #F5EDD6; --yellow-mid: #E2CFA0; --yellow-dk: #C9AA6A;
+  --red: #7A2509; --red-mid: #B03A18;
+  --charcoal: #2A2720; --offwhite: #F8F5EF; --muted: #8A8070; --page-bg: #EDE8DC;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--charcoal); font-family: 'Work Sans', sans-serif; color: var(--yellow); min-height: 100vh; }
+.site-header { position: sticky; top: 0; z-index: 100; background: var(--charcoal); border-bottom: 3px solid var(--red); padding: 14px 40px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.header-wm { font-family: 'Work Sans', sans-serif; font-weight: 200; font-size: 1.6rem; color: var(--yellow); letter-spacing: 0.08em; text-decoration: none; flex-shrink: 0; }
+.header-wm b { font-weight: 600; }
+.header-nav { display: flex; gap: 20px; align-items: center; }
+.header-back { font-family: 'Work Sans', sans-serif; font-size: 0.82rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red-mid); text-decoration: none; }
+.header-back:hover { color: var(--yellow); }
+
+.page-title-block { padding: 36px 40px 28px; border-bottom: 1px solid rgba(122,37,9,0.3); }
+.breadcrumb { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red-mid); margin-bottom: 10px; }
+.breadcrumb a { color: var(--red-mid); text-decoration: none; }
+.breadcrumb a:hover { color: var(--yellow); }
+.page-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red-mid); margin-bottom: 8px; }
+.page-title { font-family: 'Work Sans', sans-serif; font-weight: 500; font-size: 2rem; color: var(--yellow); }
+.page-note { font-family: 'Lora', serif; font-style: italic; font-size: 0.9rem; color: var(--muted); margin-top: 8px; }
+
+.items-section { padding: 40px; max-width: 800px; }
+
+/* ═══════════════════════════════════════════════════
+   SIMPLE ITEM — name, note, optional link
+   Good for: tools, wood species, art supplies
+   ═══════════════════════════════════════════════════ */
+.item-simple {
+  border-left: 3px solid var(--red);
+  padding: 16px 20px;
+  margin-bottom: 3px;
+  background: rgba(255,255,255,0.03);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.item-name { font-family: 'Lora', serif; font-size: 1rem; color: var(--yellow-mid); margin-bottom: 3px; }
+.item-note { font-family: 'Lora', serif; font-style: italic; font-size: 0.84rem; color: var(--muted); line-height: 1.5; }
+.item-link { font-size: 0.78rem; color: var(--red-mid); text-decoration: none; letter-spacing: 0.04em; white-space: nowrap; flex-shrink: 0; align-self: center; }
+.item-link:hover { color: var(--yellow); }
+
+/* ═══════════════════════════════════════════════════
+   RICH ITEM — image + name + note + link
+   Good for: filaments, borrowed prints, shop upgrades
+   ═══════════════════════════════════════════════════ */
+.item-rich {
+  border-left: 3px solid var(--red);
+  padding: 16px 20px;
+  margin-bottom: 3px;
+  background: rgba(255,255,255,0.03);
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.item-thumb { width: 72px; height: 72px; object-fit: cover; display: block; border: 1px solid rgba(122,37,9,0.3); flex-shrink: 0; }
+.item-thumb-placeholder { width: 72px; height: 72px; background: rgba(122,37,9,0.15); border: 1px solid rgba(122,37,9,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.item-thumb-placeholder span { font-size: 0.6rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; text-align: center; }
+.item-body { display: flex; flex-direction: column; gap: 3px; }
+
+.section-note { font-family: 'Lora', serif; font-style: italic; font-size: 0.85rem; color: var(--muted); padding: 0 0 20px; }
+
+.footer { background: var(--charcoal); border-top: 3px solid var(--red); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; }
+.footer-wm { font-family: 'Work Sans', sans-serif; font-weight: 200; font-size: 1.5rem; color: var(--yellow); letter-spacing: 0.08em; }
+.footer-wm b { font-weight: 600; }
+.footer-loc { font-family: 'Work Sans', sans-serif; font-size: 0.85rem; font-weight: 300; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+@media (max-width: 600px) { .items-section { padding: 28px 16px; } .site-header { padding: 14px 16px; } .page-title-block { padding: 28px 16px; } .item-rich { grid-template-columns: 56px 1fr; } .item-thumb, .item-thumb-placeholder { width: 56px; height: 56px; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="header-wm">l<b>15</b></a>
+  <div class="header-nav">
+    <a href="l15_workshopcore.html" class="header-back">← Workshopcore</a>
+    <a href="index.html" class="header-back">Home</a>
+  </div>
+</header>
+
+<div class="page-title-block">
+  <div class="breadcrumb"><a href="l15_workshopcore.html">Workshopcore</a> / Borrowed Prints</div>
+  <div class="page-eyebrow">Workshopcore</div>
+  <div class="page-title">Borrowed Prints</div>
+  <div class="page-note">files used from others — credit where due</div>
+</div>
+
+<section class="items-section">
+
+<!-- ═══════════════════════════════════════════════════
+     RICH ITEM — image, name, note, optional link
+     Copy this block to add an item.
+     Replace objects.png with your photo when ready.
+     ═══════════════════════════════════════════════════ -->
+
+  <!-- Example with placeholder image -->
+  <div class="item-rich">
+    <div class="item-thumb-placeholder"><span>[photo]</span></div>
+    <div class="item-body">
+      <div class="item-name">[item name]</div>
+      <div class="item-note">[notes — brand, settings, where to buy, anything useful]</div>
+      <a href="https://[link]" class="item-link" target="_blank">→ source</a>
+    </div>
+  </div>
+
+  <!-- Example with real image -->
+  <!--
+  <div class="item-rich">
+    <img class="item-thumb" src="images/[yourfile.jpg]" alt="[item]">
+    <div class="item-body">
+      <div class="item-name">[item name]</div>
+      <div class="item-note">[notes]</div>
+      <a href="https://[link]" class="item-link" target="_blank">→ source</a>
+    </div>
+  </div>
+  -->
+
+  <!-- Add more items above this line -->
+
+</section>
+
+<footer class="footer">
+  <div class="footer-wm">l<b>15</b></div>
+  <div class="footer-loc">THE <span style="text-transform:none">l</span>15 WORKSHOP</div>
+</footer>
+
+</body>
+</html>

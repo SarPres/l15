@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The l15 Dictionary</title>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --yellow: #F5EDD6; --yellow-mid: #E2CFA0; --yellow-dk: #C9AA6A;
+  --red: #7A2509; --red-mid: #B03A18;
+  --charcoal: #2A2720; --offwhite: #F8F5EF; --muted: #8A8070; --page-bg: #EDE8DC;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: var(--charcoal); min-height: 100vh; }
+.site-header { position: sticky; top: 0; z-index: 100; background: var(--offwhite); border-bottom: 3px solid var(--red); padding: 14px 40px; display: flex; align-items: center; justify-content: space-between; }
+.header-wm { font-family: 'Work Sans', sans-serif; font-weight: 200; font-size: 1.6rem; color: var(--charcoal); letter-spacing: 0.08em; text-decoration: none; }
+.header-wm b { font-weight: 600; }
+.header-back { font-family: 'Work Sans', sans-serif; font-size: 0.82rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); text-decoration: none; }
+.header-back:hover { text-decoration: underline; }
+.page-title-block { background: var(--offwhite); border-bottom: 1.5px solid var(--yellow-dk); padding: 40px 40px 32px; }
+.page-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+.page-title { font-family: 'Work Sans', sans-serif; font-weight: 200; font-size: 2.6rem; color: var(--charcoal); letter-spacing: 0.04em; }
+.page-title b { font-weight: 600; }
+.newspaper { padding: 40px; columns: 3; column-gap: 24px; }
+.dict-card { break-inside: avoid; background: var(--offwhite); border: 1.5px solid var(--charcoal); outline: 3px solid var(--offwhite); box-shadow: 0 0 0 5px var(--charcoal); margin-bottom: 24px; cursor: pointer; position: relative; transition: box-shadow 0.2s; overflow: hidden; }
+.dict-card:hover { box-shadow: 0 0 0 5px var(--red); }
+.card-img { width: 100%; height: 140px; overflow: hidden; }
+.card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card-video { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: var(--charcoal); }
+.card-video iframe, .card-video video { width: 100%; height: 100%; display: block; border: none; }
+.card-inner { padding: 18px 18px 14px; }
+.card-eyebrow { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.card-term { font-family: 'Work Sans', sans-serif; font-weight: 600; font-size: 1.15rem; color: var(--charcoal); margin-bottom: 3px; }
+.card-origin { font-family: 'Lora', serif; font-style: italic; font-size: 0.82rem; color: var(--muted); margin-bottom: 10px; }
+.card-divider { height: 1px; background: var(--red); margin-bottom: 10px; }
+.card-body { font-family: 'Lora', serif; font-size: 0.92rem; line-height: 1.6; color: var(--charcoal); margin-bottom: 14px; }
+.card-footer { display: flex; justify-content: space-between; align-items: flex-end; gap: 8px; }
+.card-tag { font-size: 0.72rem; color: var(--red); letter-spacing: 0.06em; flex: 1; }
+.card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+.card-wm { font-family: 'Work Sans', sans-serif; font-weight: 200; font-size: 0.85rem; color: var(--muted); letter-spacing: 0.08em; }
+.card-wm b { font-weight: 600; }
+.card-expand-hint { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.08em; }
+/* OVERLAY */
+.overlay { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(42,39,32,0.82); align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
+.overlay.active { display: flex; }
+.overlay-card { background: var(--offwhite); border: 1.5px solid var(--charcoal); outline: 3px solid var(--offwhite); box-shadow: 0 0 0 6px var(--charcoal); max-width: 620px; width: 100%; position: relative; overflow: hidden; margin: auto; }
+.overlay-img { width: 100%; height: 220px; overflow: hidden; display: none; }
+.overlay-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.overlay-img.visible { display: block; }
+.overlay-video { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: var(--charcoal); display: none; }
+.overlay-video iframe { width: 100%; height: 100%; display: block; border: none; }
+.overlay-video.visible { display: block; }
+.overlay-body-wrap { padding: 32px; }
+.overlay-eyebrow { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.overlay-term { font-family: 'Work Sans', sans-serif; font-weight: 600; font-size: 1.8rem; color: var(--charcoal); margin-bottom: 4px; }
+.overlay-origin { font-family: 'Lora', serif; font-style: italic; font-size: 0.9rem; color: var(--muted); margin-bottom: 18px; }
+.overlay-divider { height: 2px; background: var(--red); margin-bottom: 20px; }
+.overlay-text { font-family: 'Lora', serif; font-size: 1rem; line-height: 1.75; color: var(--charcoal); margin-bottom: 20px; }
+.overlay-note { font-family: 'Lora', serif; font-style: italic; font-size: 0.88rem; color: var(--muted); border-left: 3px solid var(--red); padding-left: 14px; margin-bottom: 20px; line-height: 1.6; display: none; }
+.overlay-note.visible { display: block; }
+.overlay-used-in { font-size: 0.75rem; color: var(--red); letter-spacing: 0.06em; }
+.overlay-close { position: absolute; top: 12px; right: 16px; background: none; border: none; font-size: 1.4rem; color: var(--muted); cursor: pointer; z-index: 2; line-height: 1; }
+.overlay-close:hover { color: var(--charcoal); }
+.footer { background: var(--charcoal); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; }
+.footer-wm { font-family: 'Work Sans', sans-serif; font-weight: 200; font-size: 1.5rem; color: var(--yellow); letter-spacing: 0.08em; }
+.footer-wm b { font-weight: 600; }
+.footer-loc { font-family: 'Work Sans', sans-serif; font-size: 0.85rem; font-weight: 300; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+@media (max-width: 900px) { .newspaper { columns: 2; padding: 24px; } }
+@media (max-width: 600px) { .newspaper { columns: 1; padding: 16px; } .site-header { padding: 14px 20px; } .page-title-block { padding: 24px 20px; } .overlay-body-wrap { padding: 24px; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="header-wm">l<b>15</b></a>
+  <a href="index.html" class="header-back">← back</a>
+</header>
+
+<div class="page-title-block">
+  <div class="page-eyebrow">Reference</div>
+  <div class="page-title">The l<b>15</b> Dictionary</div>
+</div>
+
+<section class="newspaper">
+
+<!-- ═══════════════════════════════════════════════════
+     HOW TO ADD A CARD
+     Copy a block below. Change onclick number.
+     Add matching entry to entries[] in the JS at bottom.
+     CARD TYPES: standard / with image / with video (see examples)
+     ═══════════════════════════════════════════════════ -->
+
+  <!-- Watson card — real content, keep or comment out -->
+  <div class="dict-card" onclick="openCard(0)">
+    <div class="card-img">
+      <img src="images/objects.png" alt="Watson">
+    </div>
+    <div class="card-inner">
+      <div class="card-eyebrow">The l15 Dictionary</div>
+      <div class="card-term">Watson</div>
+      <div class="card-origin">Lagotto Romagnolo</div>
+      <div class="card-divider"></div>
+      <div class="card-body">Not a mascot. A character. He is in the photographs, in the brand. Watson is where l15 and life are the same thing.</div>
+      <div class="card-footer">
+        <span class="card-tag">→ throughout</span>
+        <div class="card-right">
+          <span class="card-wm">l<b>15</b></span>
+          <span class="card-expand-hint">expand →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Houndstooth — real content -->
+  <div class="dict-card" onclick="openCard(1)">
+    <div class="card-inner">
+      <div class="card-eyebrow">The l15 Dictionary</div>
+      <div class="card-term">Houndstooth</div>
+      <div class="card-origin">textile pattern — 1930s Scotland</div>
+      <div class="card-divider"></div>
+      <div class="card-body">A two-colour broken check woven traditionally in wool. Associated with tailoring and the countryside.</div>
+      <div class="card-footer">
+        <span class="card-tag">→ Objects, Workshopcore</span>
+        <div class="card-right">
+          <span class="card-wm">l<b>15</b></span>
+          <span class="card-expand-hint">expand →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tessellation — real content -->
+  <div class="dict-card" onclick="openCard(2)">
+    <div class="card-inner">
+      <div class="card-eyebrow">The l15 Dictionary</div>
+      <div class="card-term">Tessellation</div>
+      <div class="card-origin">Latin: tessella, small tile</div>
+      <div class="card-divider"></div>
+      <div class="card-body">Tiling a plane with shapes — no gaps, no overlaps. Found in Islamic art, Escher, honeycomb, bathroom floors.</div>
+      <div class="card-footer">
+        <span class="card-tag">→ INTI, Objects</span>
+        <div class="card-right">
+          <span class="card-wm">l<b>15</b></span>
+          <span class="card-expand-hint">expand →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Padauk — real content -->
+  <div class="dict-card" onclick="openCard(3)">
+    <div class="card-inner">
+      <div class="card-eyebrow">The l15 Dictionary</div>
+      <div class="card-term">Padauk</div>
+      <div class="card-origin">Pterocarpus soyauxii — West Africa</div>
+      <div class="card-divider"></div>
+      <div class="card-body">Vivid orange-red when freshly cut, deepening to maroon with age. The colour became the l15 accent — not invented, found.</div>
+      <div class="card-footer">
+        <span class="card-tag">→ Atelier, Objects</span>
+        <div class="card-right">
+          <span class="card-wm">l<b>15</b></span>
+          <span class="card-expand-hint">expand →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Workshopcore — real content -->
+  <div class="dict-card" onclick="openCard(4)">
+    <div class="card-inner">
+      <div class="card-eyebrow">The l15 Dictionary</div>
+      <div class="card-term">Workshopcore</div>
+      <div class="card-origin">compound noun — l15 coinage</div>
+      <div class="card-divider"></div>
+      <div class="card-body">A way of working. The tools, the smell, the sequence. Not an aesthetic — the actual thing.</div>
+      <div class="card-footer">
+        <span class="card-tag">→ Workshopcore</span>
+        <div class="card-right">
+          <span class="card-wm">l<b>15</b></span>
+          <span class="card-expand-hint">expand →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--
+  PLACEHOLDER CARD — uncomment and fill in when ready
+
+  <div class="dict-card" onclick="openCard(5)">
+    <div class="card-inner">
+      <div class="card-eyebrow">The l15 Dictionary</div>
+      <div class="card-term">[term]</div>
+      <div class="card-origin">[origin]</div>
+      <div class="card-divider"></div>
+      <div class="card-body">[short definition for the card]</div>
+      <div class="card-footer">
+        <span class="card-tag">→ [cross-ref]</span>
+        <div class="card-right">
+          <span class="card-wm">l<b>15</b></span>
+          <span class="card-expand-hint">expand →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!--
+  CARD WITH IMAGE — uncomment and fill in when ready
+
+  <div class="dict-card" onclick="openCard(N)">
+    <div class="card-img">
+      <img src="images/[yourfile]" alt="[description]">
+    </div>
+    <div class="card-inner">
+      ... same as above ...
+    </div>
+  </div>
+  -->
+
+  <!--
+  CARD WITH VIDEO — uncomment and fill in when ready
+  Replace YOUTUBE_VIDEO_ID with the ID from the video URL
+
+  <div class="dict-card" onclick="openCard(N)">
+    <div class="card-video">
+      <iframe src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID" allowfullscreen></iframe>
+    </div>
+    <div class="card-inner">
+      ... same as above ...
+    </div>
+  </div>
+  -->
+
+</section>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeOverlay(event)">
+  <div class="overlay-card" id="overlay-card">
+    <button class="overlay-close" onclick="closeCard()">×</button>
+    <div class="overlay-img" id="ov-img-wrap"><img id="ov-img" src="" alt=""></div>
+    <div class="overlay-video" id="ov-video-wrap"></div>
+    <div class="overlay-body-wrap">
+      <div class="overlay-eyebrow">The l15 Dictionary</div>
+      <div class="overlay-term" id="ov-term"></div>
+      <div class="overlay-origin" id="ov-origin"></div>
+      <div class="overlay-divider"></div>
+      <div class="overlay-text" id="ov-body"></div>
+      <div class="overlay-note" id="ov-note"></div>
+      <div class="overlay-used-in" id="ov-tag"></div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-wm">l<b>15</b></div>
+  <div class="footer-loc">THE <span style="text-transform:none">l</span>15 WORKSHOP</div>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════
+// DICTIONARY ENTRIES
+// One object per visible card above.
+// img: "images/file.jpg" or "" for none
+// video: "https://www.youtube.com/embed/ID" or ""
+// note: italic sidebar text in overlay, or ""
+// ═══════════════════════════════════════════════════
+const entries = [
+  {
+    term: "Watson",
+    origin: "Lagotto Romagnolo",
+    body: "Not a mascot. A character. He is in the photographs, in the shop, in the brand.\n\n[your words here]",
+    note: "",
+    tag: "→ appears in: throughout",
+    img: "images/watson_hero.jpg",
+    video: ""
+  },
+  {
+    term: "Houndstooth",
+    origin: "textile pattern — 1930s Scotland",
+    body: "A two-colour broken check pattern, woven traditionally in wool. The jagged points suggest a tooth. Used in mid-century tailoring and Highland dress.\n\nThe pattern entered l15 through a 3D render and stayed.",
+    note: "At some point a pattern stops being decoration and starts being a position.",
+    tag: "→ appears in: Objects, Workshopcore",
+    img: "",
+    video: ""
+  },
+  {
+    term: "Tessellation",
+    origin: "Latin: tessella, small tile",
+    body: "The tiling of a plane using shapes with no gaps and no overlaps. A constraint that produces infinite variety.\n\nFound in Islamic geometric art, in Escher, in honeycomb, in bathroom floors.",
+    note: "Houndstooth is a tessellation.",
+    tag: "→ appears in: INTI, Objects",
+    img: "",
+    video: ""
+  },
+  {
+    term: "Padauk",
+    origin: "Pterocarpus soyauxii — West Africa",
+    body: "A tropical hardwood with vivid orange-red colour when freshly cut, deepening to maroon over time. Dense, durable, slightly oily.\n\nThe colour became the l15 accent — not invented, found.",
+    note: "The sawdust is also brilliantly red.",
+    tag: "→ appears in: Atelier, Objects",
+    img: "",
+    video: ""
+  },
+  {
+    term: "Workshopcore",
+    origin: "compound noun — l15 coinage",
+    body: "A way of working. The tools, the smell, the sequence. Not an aesthetic borrowed from somewhere — the actual thing, documented as it happens.\n\nEverything digital should feel like a bandsaw: fast, precise, purposeful.",
+    note: "Wood grain is the new leopard print.",
+    tag: "→ appears in: Workshopcore",
+    img: "",
+    video: ""
+  }
+  // Add entries here when you add new cards above
+];
+
+function openCard(i) {
+  const e = entries[i];
+  document.getElementById('ov-term').textContent = e.term;
+  document.getElementById('ov-origin').textContent = e.origin;
+  const bodyEl = document.getElementById('ov-body');
+  bodyEl.innerHTML = e.body.split('\n\n').map(p => `<p style="margin-bottom:1em">${p}</p>`).join('');
+  const noteEl = document.getElementById('ov-note');
+  if (e.note) { noteEl.textContent = e.note; noteEl.classList.add('visible'); }
+  else { noteEl.classList.remove('visible'); }
+  document.getElementById('ov-tag').textContent = e.tag || '';
+  const imgWrap = document.getElementById('ov-img-wrap');
+  const img = document.getElementById('ov-img');
+  if (e.img) { img.src = e.img; imgWrap.classList.add('visible'); }
+  else { imgWrap.classList.remove('visible'); }
+  const vidWrap = document.getElementById('ov-video-wrap');
+  if (e.video) {
+    vidWrap.innerHTML = `<iframe src="${e.video}" allowfullscreen style="width:100%;height:100%;border:none"></iframe>`;
+    vidWrap.classList.add('visible');
+  } else { vidWrap.innerHTML = ''; vidWrap.classList.remove('visible'); }
+  document.getElementById('overlay').classList.add('active');
+}
+function closeCard() {
+  document.getElementById('overlay').classList.remove('active');
+  document.getElementById('ov-video-wrap').innerHTML = '';
+}
+function closeOverlay(e) { if (e.target === document.getElementById('overlay')) closeCard(); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCard(); });
+</script>
+</body>
+</html>
