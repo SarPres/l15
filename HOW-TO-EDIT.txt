@@ -1,0 +1,153 @@
+l15 WEBSITE — HOW TO EDIT
+==========================
+Last updated: 2026
+
+
+YOUR FOLDER STRUCTURE
+---------------------
+l15/
+├── l15_landing.html       ← Homepage with nav tiles
+├── l15_dictionary.html    ← The l15 Dictionary
+├── l15_process.html       ← The Process (posts)
+├── l15_atelier.html       ← Atelier (builds archive)
+├── l15_objects.html       ← Objects collection
+├── l15_book.html          ← I'm Not That Important
+├── l15_workshopcore.html  ← Workshopcore reference
+├── l15_plans.html         ← Plans
+├── HOW-TO-EDIT.txt        ← this file
+└── images/
+    ├── watson_hero.jpg
+    ├── the_dictionary.png
+    ├── the_process.jpg
+    ├── the_atelier.jpg
+    ├── objects.png
+    ├── the_book.png
+    ├── workshopcore.jpeg
+    └── plans.png
+
+
+TO DEPLOY TO NETLIFY
+--------------------
+1. Make your changes (see below)
+2. Go to netlify.com → your site → Deploys tab
+3. Drag the entire l15/ FOLDER onto the deploy drop zone
+4. Done. Live in 30 seconds.
+
+
+TO CHANGE A PHOTO (anywhere on the site)
+-----------------------------------------
+Option A — Same filename:
+  1. Rename your new photo to match the old filename (e.g. watson_hero.jpg)
+  2. Drop it into the images/ folder, replacing the old one
+  3. Redeploy
+
+Option B — New filename:
+  1. Drop the new photo into images/
+  2. Open the HTML file in a text editor
+  3. Find the old filename (e.g. watson_hero.jpg) and replace with new name
+  4. Redeploy
+
+
+TO ADD A DICTIONARY ENTRY (l15_dictionary.html)
+------------------------------------------------
+Open l15_dictionary.html in a text editor.
+
+STEP 1 — Add a card in the newspaper section.
+Copy this block, paste it after the last .dict-card, change N to the next number:
+
+  <div class="dict-card" onclick="openCard(N)">
+    <div class="card-eyebrow">The l15 Dictionary</div>
+    <div class="card-term">Your Word</div>
+    <div class="card-origin">origin — context</div>
+    <div class="card-divider"></div>
+    <div class="card-body">Short definition for the card.</div>
+    <div class="card-footer">
+      <span class="card-tag">→ cross-reference</span>
+      <span class="card-wm">l<b>15</b></span>
+    </div>
+    <span class="card-expand-hint">expand →</span>
+  </div>
+
+STEP 2 — Add matching entry in the JS entries array at bottom of file:
+(Add a comma after the last entry, then add your new object)
+
+  {
+    term: "Your Word",
+    origin: "origin — context",
+    body: "Full extended definition for the overlay.",
+    note: "Personal note or cross-reference.",
+    tag: "→ appears in: Section Name"
+  }
+
+
+TO ADD AN ATELIER BUILD (l15_atelier.html)
+------------------------------------------
+Copy the .build-entry block, increment the number (001 → 002 etc).
+Add matching object to the builds[] array in the JS at the bottom.
+Images go inside the entry with: <img class="build-image" src="images/yourphoto.jpg" alt="...">
+
+
+TO ADD A PROCESS POST (l15_process.html)
+-----------------------------------------
+Copy a .post-card block and paste it above "ADD MORE POSTS HERE".
+With photo: use grid (default).
+Text only: add class="post-card text-only" to the div.
+Replace [Add your caption here] with your text.
+Replace [date] with the date.
+
+
+TO ADD AN OBJECT (l15_objects.html)
+------------------------------------
+Copy a .object-card block, increment the onclick number.
+Add matching object to the objects[] array in the JS at the bottom.
+For cards without a photo yet, use the .placeholder version.
+
+
+TO ADD A BOOK CHAPTER (l15_book.html)
+--------------------------------------
+Copy a .chapter block, increment the onclick number.
+Add matching entry to the chapters[] array in the JS at the bottom.
+Paste your writing into the body field.
+Mark unfinished sections with [needs sharpening]
+
+
+TO ADD A WORKSHOPCORE CATEGORY (l15_workshopcore.html)
+-------------------------------------------------------
+Copy a .wc-group block. Click header expands/collapses.
+Add .wc-item rows inside .wc-group-body for each item.
+
+
+TO ADD A PLAN (l15_plans.html)
+--------------------------------
+Copy a .plan-entry block.
+Change status class to "active" or leave as "next" or "someday".
+
+
+TO CHANGE NAV TILE SUBTITLES (l15_landing.html)
+-------------------------------------------------
+Find <div class="nav-sub">[add subtitle]</div>
+Replace [add subtitle] with your text.
+
+
+TO CHANGE INTRO TEXT (l15_landing.html)
+----------------------------------------
+Find the .intro-text block.
+Edit the text inside the <p> tags.
+The O'Keeffe quote is in .intro-quote — leave or replace.
+
+
+EDITING TOOLS
+-------------
+Good free text editors for HTML:
+- VS Code (code.visualstudio.com) — best option
+- Notepad++ (Windows)
+- TextEdit (Mac, use plain text mode: Format → Make Plain Text)
+Do NOT edit HTML in Word or Google Docs — they break the code.
+
+
+NOTES
+-----
+- Always keep a backup of the whole folder before editing
+- The images/ folder must stay inside the l15/ folder
+- File names are case-sensitive — watson_hero.jpg ≠ Watson_Hero.jpg
+- If something breaks: undo your last change, redeploy
