@@ -28,25 +28,43 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
 .intro-quote { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--yellow-dk); font-family: 'Lora', serif; font-style: italic; font-size: 0.95rem; color: var(--muted); max-width: 560px; line-height: 1.7; }
 .nav-section { padding: 52px 40px; background: var(--page-bg); }
 .nav-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto; }
+
+/* TILE */
 .nav-btn { position: relative; aspect-ratio: 4/3; overflow: hidden; cursor: pointer; text-decoration: none; display: block; background: var(--charcoal); perspective: 1000px; }
 .nav-btn-inner { position: absolute; inset: 0; transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1); transform-style: preserve-3d; }
 .nav-btn:hover .nav-btn-inner { transform: rotateY(180deg); }
-.nav-front, .nav-back { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 14px; }
-.nav-front { background: var(--yellow); border: 2px solid var(--charcoal); overflow: hidden; }
-.nav-back { transform: rotateY(180deg); overflow: hidden; padding: 0; }
+
+/* FRONT — greyscale photo with text overlay */
+.nav-front { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden; }
+.nav-front-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); opacity: 0.55; }
+.nav-front-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(42,39,32,0.82) 0%, rgba(42,39,32,0.2) 60%); }
+.nav-front-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 14px; }
+.nav-rule { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--red); }
+.nav-eyebrow { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red-mid); margin-bottom: 3px; }
+.nav-title { font-family: 'Work Sans', sans-serif; font-weight: 500; font-size: 0.9rem; color: var(--yellow); line-height: 1.2; margin-bottom: 3px; }
+.nav-sub { font-family: 'Lora', serif; font-style: italic; font-size: 0.75rem; color: var(--yellow-mid); line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; opacity: 0.8; }
+
+/* BACK — full colour photo */
+.nav-back { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(180deg); overflow: hidden; }
 .nav-back img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .nav-back-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(42,39,32,0.72) 0%, transparent 60%); }
-.nav-back-label { position: absolute; bottom: 12px; left: 12px; font-family: 'Work Sans', sans-serif; font-weight: 500; font-size: 0.78rem; color: var(--yellow); letter-spacing: 0.04em; }
-.nav-eyebrow { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.nav-title { font-family: 'Work Sans', sans-serif; font-weight: 500; font-size: 0.9rem; color: var(--charcoal); line-height: 1.2; margin-bottom: 3px; }
-.nav-sub { font-family: 'Lora', serif; font-style: italic; font-size: 0.75rem; color: var(--muted); line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.nav-rule { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--red); }
+.nav-back-label { position: absolute; bottom: 14px; left: 18px; font-family: 'Work Sans', sans-serif; font-weight: 500; font-size: 0.85rem; color: var(--yellow); letter-spacing: 0.04em; }
+
 .footer { background: var(--charcoal); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; }
 .footer-wm { font-family: 'Work Sans', sans-serif; font-weight: 200; font-size: 1.5rem; color: var(--yellow); letter-spacing: 0.08em; }
 .footer-wm b { font-weight: 600; }
 .footer-loc { font-family: 'Work Sans', sans-serif; font-size: 0.85rem; font-weight: 300; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
-@media (max-width: 1024px) { .nav-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; } }
-@media (max-width: 700px) { .nav-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } .nav-section { padding: 28px 16px; } .intro-strip { padding: 32px 20px; } .hero-wordmark { font-size: 2.2rem; left: 20px; bottom: 20px; } .hero-tagline { display: none; } .footer { padding: 20px; } .footer-loc { font-size: 0.75rem; } }
+
+@media (max-width: 1024px) { .nav-grid { gap: 10px; } }
+@media (max-width: 700px) {
+  .nav-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .nav-section { padding: 28px 16px; }
+  .intro-strip { padding: 32px 20px; }
+  .hero-wordmark { font-size: 2.2rem; left: 20px; bottom: 20px; }
+  .hero-tagline { display: none; }
+  .footer { padding: 20px; }
+  .footer-loc { font-size: 0.75rem; }
+}
 </style>
 </head>
 <body>
@@ -54,7 +72,7 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
 <div class="top-rule"></div>
 
 <section class="hero">
-  <img src="images/watson_hero.jpg" alt="Watson on moss with red bandana">
+  <img src="images/watson_hero.jpg" alt="Watson">
   <div class="hero-wordmark">l<b>15</b></div>
   <div class="hero-tagline">Oslo — ongoing</div>
 </section>
@@ -66,7 +84,6 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
       <p>The tiles below make out l15 — it is intertwined with my life. It is a canvas.</p>
       <p>~Sarah</p>
     </div>
-    <!-- Replace or remove this quote when you have your own words here -->
     <div class="intro-quote">
       "your life is your art in addition to the thing that you call your art" — Georgia O'Keeffe
     </div>
@@ -81,9 +98,13 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
       <div class="nav-rule"></div>
       <div class="nav-btn-inner">
         <div class="nav-front">
-          <div class="nav-eyebrow">Log</div>
-          <div class="nav-title">The Process</div>
-          <div class="nav-sub">shop, sketches, Watson, places</div>
+          <img class="nav-front-img" src="images/the_process.jpg" alt="The Process">
+          <div class="nav-front-overlay"></div>
+          <div class="nav-front-content">
+            <div class="nav-eyebrow">Log</div>
+            <div class="nav-title">The Process</div>
+            <div class="nav-sub">shop, sketches, Watson, places</div>
+          </div>
         </div>
         <div class="nav-back">
           <img src="images/the_process.jpg" alt="The Process">
@@ -98,9 +119,13 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
       <div class="nav-rule"></div>
       <div class="nav-btn-inner">
         <div class="nav-front">
-          <div class="nav-eyebrow">Archive</div>
-          <div class="nav-title">l15 Atelier</div>
-          <div class="nav-sub">builds, numbered</div>
+          <img class="nav-front-img" src="images/the_atelier.jpg" alt="l15 Atelier">
+          <div class="nav-front-overlay"></div>
+          <div class="nav-front-content">
+            <div class="nav-eyebrow">Archive</div>
+            <div class="nav-title">l15 Atelier</div>
+            <div class="nav-sub">builds, numbered</div>
+          </div>
         </div>
         <div class="nav-back">
           <img src="images/the_atelier.jpg" alt="l15 Atelier">
@@ -115,9 +140,13 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
       <div class="nav-rule"></div>
       <div class="nav-btn-inner">
         <div class="nav-front">
-          <div class="nav-eyebrow">Collection</div>
-          <div class="nav-title">Objects</div>
-          <div class="nav-sub">things made with intention</div>
+          <img class="nav-front-img" src="images/objects.png" alt="Objects">
+          <div class="nav-front-overlay"></div>
+          <div class="nav-front-content">
+            <div class="nav-eyebrow">Collection</div>
+            <div class="nav-title">Objects</div>
+            <div class="nav-sub">things made with intention</div>
+          </div>
         </div>
         <div class="nav-back">
           <img src="images/objects.png" alt="Objects">
@@ -132,9 +161,13 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
       <div class="nav-rule"></div>
       <div class="nav-btn-inner">
         <div class="nav-front">
-          <div class="nav-eyebrow">Plans</div>
-          <div class="nav-title">Plans</div>
-          <div class="nav-sub">dimensions, cut lists, how-to</div>
+          <img class="nav-front-img" src="images/plans.png" alt="Plans">
+          <div class="nav-front-overlay"></div>
+          <div class="nav-front-content">
+            <div class="nav-eyebrow">Plans</div>
+            <div class="nav-title">Plans</div>
+            <div class="nav-sub">dimensions, cut lists, how-to</div>
+          </div>
         </div>
         <div class="nav-back">
           <img src="images/plans.png" alt="Plans">
@@ -149,9 +182,13 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
       <div class="nav-rule"></div>
       <div class="nav-btn-inner">
         <div class="nav-front">
-          <div class="nav-eyebrow">Reference</div>
-          <div class="nav-title">Workshopcore</div>
-          <div class="nav-sub">tools, materials, methods</div>
+          <img class="nav-front-img" src="images/workshopcore.jpeg" alt="Workshopcore">
+          <div class="nav-front-overlay"></div>
+          <div class="nav-front-content">
+            <div class="nav-eyebrow">Reference</div>
+            <div class="nav-title">Workshopcore</div>
+            <div class="nav-sub">tools, materials, methods</div>
+          </div>
         </div>
         <div class="nav-back">
           <img src="images/workshopcore.jpeg" alt="Workshopcore">
@@ -166,9 +203,13 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
       <div class="nav-rule"></div>
       <div class="nav-btn-inner">
         <div class="nav-front">
-          <div class="nav-eyebrow">Book</div>
-          <div class="nav-title">I'm Not That Important</div>
-          <div class="nav-sub">a novella</div>
+          <img class="nav-front-img" src="images/the_book.png" alt="I'm Not That Important">
+          <div class="nav-front-overlay"></div>
+          <div class="nav-front-content">
+            <div class="nav-eyebrow">Book</div>
+            <div class="nav-title">I'm Not That Important</div>
+            <div class="nav-sub">a novella</div>
+          </div>
         </div>
         <div class="nav-back">
           <img src="images/the_book.png" alt="I'm Not That Important">
@@ -183,9 +224,13 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
       <div class="nav-rule"></div>
       <div class="nav-btn-inner">
         <div class="nav-front">
-          <div class="nav-eyebrow">Reference</div>
-          <div class="nav-title">The l15 Dictionary</div>
-          <div class="nav-sub">words that mean something here</div>
+          <img class="nav-front-img" src="images/the_dictionary.png" alt="The l15 Dictionary">
+          <div class="nav-front-overlay"></div>
+          <div class="nav-front-content">
+            <div class="nav-eyebrow">Reference</div>
+            <div class="nav-title">The l15 Dictionary</div>
+            <div class="nav-sub">words that mean something here</div>
+          </div>
         </div>
         <div class="nav-back">
           <img src="images/the_dictionary.png" alt="The l15 Dictionary">
@@ -200,9 +245,13 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
       <div class="nav-rule"></div>
       <div class="nav-btn-inner">
         <div class="nav-front">
-          <div class="nav-eyebrow">Cast</div>
-          <div class="nav-title">Main Characters</div>
-          <div class="nav-sub">the people and the dog</div>
+          <img class="nav-front-img" src="images/watson_hero.jpg" alt="Main Characters">
+          <div class="nav-front-overlay"></div>
+          <div class="nav-front-content">
+            <div class="nav-eyebrow">Cast</div>
+            <div class="nav-title">Main Characters</div>
+            <div class="nav-sub">the people and the dog</div>
+          </div>
         </div>
         <div class="nav-back">
           <img src="images/watson_hero.jpg" alt="Main Characters">

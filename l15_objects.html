@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>l15</title>
+<title>Objects — l15</title>
 <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -13,212 +13,168 @@
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: var(--charcoal); min-height: 100vh; }
-.top-rule { height: 5px; background: var(--red); width: 100%; }
-.hero { position: relative; width: 100%; height: 85vh; min-height: 520px; overflow: hidden; background: var(--charcoal); }
-.hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; opacity: 0.88; }
-.hero-wordmark { position: absolute; bottom: 36px; left: 40px; font-family: 'Work Sans', sans-serif; font-weight: 200; font-size: 3.2rem; color: var(--yellow); letter-spacing: 0.08em; line-height: 1; }
-.hero-wordmark b { font-weight: 600; }
-.hero-tagline { position: absolute; bottom: 44px; right: 40px; font-family: 'Lora', serif; font-style: italic; font-size: 1.15rem; color: var(--yellow); opacity: 0.85; text-align: right; max-width: 260px; line-height: 1.5; }
-.intro-strip { background: var(--yellow); border-top: 3px solid var(--red); border-bottom: 3px solid var(--red); padding: 52px 40px; position: relative; overflow: hidden; }
-.grain-overlay { position: absolute; inset: 0; opacity: 0.07; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.015 0.8' numOctaves='4' seed='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='600' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 400px 600px; }
-.intro-strip::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: repeating-linear-gradient(90deg, transparent, transparent 18px, rgba(42,39,32,0.045) 18px, rgba(42,39,32,0.045) 19px); }
-.intro-content { position: relative; z-index: 1; }
-.intro-text { font-family: 'Lora', serif; font-size: 1.2rem; line-height: 1.8; color: var(--charcoal); max-width: 600px; }
-.intro-text p + p { margin-top: 0.5em; }
-.intro-quote { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--yellow-dk); font-family: 'Lora', serif; font-style: italic; font-size: 0.95rem; color: var(--muted); max-width: 560px; line-height: 1.7; }
-.nav-section { padding: 52px 40px; background: var(--page-bg); }
-.nav-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto; }
-.nav-btn { position: relative; aspect-ratio: 4/3; overflow: hidden; cursor: pointer; text-decoration: none; display: block; background: var(--charcoal); perspective: 1000px; }
-.nav-btn-inner { position: absolute; inset: 0; transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1); transform-style: preserve-3d; }
-.nav-btn:hover .nav-btn-inner { transform: rotateY(180deg); }
-.nav-front, .nav-back { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 14px; }
-.nav-front { background: var(--yellow); border: 2px solid var(--charcoal); overflow: hidden; }
-.nav-back { transform: rotateY(180deg); overflow: hidden; padding: 0; }
-.nav-back img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.nav-back-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(42,39,32,0.72) 0%, transparent 60%); }
-.nav-back-label { position: absolute; bottom: 12px; left: 12px; font-family: 'Work Sans', sans-serif; font-weight: 500; font-size: 0.78rem; color: var(--yellow); letter-spacing: 0.04em; }
-.nav-eyebrow { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.nav-title { font-family: 'Work Sans', sans-serif; font-weight: 500; font-size: 0.9rem; color: var(--charcoal); line-height: 1.2; margin-bottom: 3px; }
-.nav-sub { font-family: 'Lora', serif; font-style: italic; font-size: 0.75rem; color: var(--muted); line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.nav-rule { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--red); }
+
+.site-header { position: sticky; top: 0; z-index: 100; background: var(--offwhite); border-bottom: 3px solid var(--red); padding: 14px 40px; display: flex; align-items: center; justify-content: space-between; }
+.header-wm { font-family: 'Work Sans', sans-serif; font-weight: 200; font-size: 1.6rem; color: var(--charcoal); letter-spacing: 0.08em; text-decoration: none; }
+.header-wm b { font-weight: 600; }
+.header-back { font-family: 'Work Sans', sans-serif; font-size: 0.82rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); text-decoration: none; }
+.header-back:hover { text-decoration: underline; }
+
+.page-title-block { background: var(--offwhite); border-bottom: 1.5px solid var(--yellow-dk); padding: 40px 40px 32px; }
+.page-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+.page-title { font-family: 'Work Sans', sans-serif; font-weight: 200; font-size: 2.6rem; color: var(--charcoal); letter-spacing: 0.04em; }
+.page-title b { font-weight: 600; }
+
+.objects-section { padding: 52px 40px; }
+.objects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+
+/* =============================================
+   OBJECT CARD — copy this block to add an object
+   ============================================= */
+.object-card {
+  background: var(--offwhite);
+  border: 1.5px solid var(--charcoal);
+  outline: 3px solid var(--offwhite);
+  box-shadow: 0 0 0 5px var(--charcoal);
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.object-card:hover { box-shadow: 0 0 0 5px var(--red); }
+.object-img { width: 100%; aspect-ratio: 1; overflow: hidden; background: var(--page-bg); }
+.object-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.object-img.placeholder { display: flex; align-items: center; justify-content: center; }
+.object-img.placeholder span { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+.object-info { padding: 18px 18px 14px; }
+.object-num { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+.object-name { font-family: 'Work Sans', sans-serif; font-weight: 500; font-size: 1rem; color: var(--charcoal); margin-bottom: 4px; }
+.object-material { font-family: 'Lora', serif; font-style: italic; font-size: 0.85rem; color: var(--muted); }
+
+/* OVERLAY */
+.overlay { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(42,39,32,0.85); align-items: center; justify-content: center; padding: 40px; }
+.overlay.active { display: flex; }
+.overlay-card { background: var(--offwhite); border: 1.5px solid var(--charcoal); outline: 3px solid var(--offwhite); box-shadow: 0 0 0 6px var(--charcoal); max-width: 700px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; position: relative; max-height: 85vh; overflow: hidden; }
+.overlay-img { overflow: hidden; }
+.overlay-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.overlay-content { padding: 32px; overflow-y: auto; }
+.overlay-num { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.overlay-name { font-family: 'Work Sans', sans-serif; font-weight: 600; font-size: 1.4rem; color: var(--charcoal); margin-bottom: 4px; }
+.overlay-material { font-family: 'Lora', serif; font-style: italic; font-size: 0.9rem; color: var(--muted); margin-bottom: 18px; }
+.overlay-divider { height: 1px; background: var(--red); margin-bottom: 16px; }
+.overlay-desc { font-family: 'Lora', serif; font-size: 0.95rem; line-height: 1.7; color: var(--charcoal); }
+.overlay-close { position: absolute; top: 12px; right: 16px; background: none; border: none; font-size: 1.4rem; color: var(--muted); cursor: pointer; z-index: 2; }
+.overlay-close:hover { color: var(--charcoal); }
+
 .footer { background: var(--charcoal); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; }
 .footer-wm { font-family: 'Work Sans', sans-serif; font-weight: 200; font-size: 1.5rem; color: var(--yellow); letter-spacing: 0.08em; }
 .footer-wm b { font-weight: 600; }
-.footer-loc { font-family: 'Work Sans', sans-serif; font-size: 0.85rem; font-weight: 300; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
-@media (max-width: 1024px) { .nav-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; } }
-@media (max-width: 700px) { .nav-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } .nav-section { padding: 28px 16px; } .intro-strip { padding: 32px 20px; } .hero-wordmark { font-size: 2.2rem; left: 20px; bottom: 20px; } .hero-tagline { display: none; } .footer { padding: 20px; } .footer-loc { font-size: 0.75rem; } }
+.footer-loc { font-family: 'Work Sans', sans-serif; font-size: 0.85rem; font-weight: 300; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+
+@media (max-width: 900px) { .objects-grid { grid-template-columns: repeat(2, 1fr); } .overlay-card { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .objects-grid { grid-template-columns: 1fr; } .objects-section { padding: 32px 24px; } .site-header, .page-title-block { padding-left: 24px; padding-right: 24px; } }
 </style>
 </head>
 <body>
 
-<div class="top-rule"></div>
+<header class="site-header">
+  <a href="index.html" class="header-wm">l<b>15</b></a>
+  <a href="index.html" class="header-back">← back</a>
+</header>
 
-<section class="hero">
-  <img src="images/watson_hero.jpg" alt="Watson on moss with red bandana">
-  <div class="hero-wordmark">l<b>15</b></div>
-  <div class="hero-tagline">Oslo — ongoing</div>
-</section>
+<div class="page-title-block">
+  <div class="page-eyebrow">Collection</div>
+  <div class="page-title"><b>Objects</b></div>
+</div>
 
-<section class="intro-strip">
-  <div class="grain-overlay"></div>
-  <div class="intro-content">
-    <div class="intro-text">
-      <p>The tiles below make out l15 — it is intertwined with my life. It is my canvas.</p>
-      <p>~Sarah</p>
+<section class="objects-section">
+  <div class="objects-grid">
+
+    <!-- =============================================
+         COPY THIS BLOCK TO ADD AN OBJECT
+         Change onclick number, add entry to JS array
+         ============================================= -->
+    <div class="object-card" onclick="openObject(0)">
+      <div class="object-img">
+        <img src="images/objects.png" alt="Watson pop-art">
+      </div>
+      <div class="object-info">
+        <div class="object-num">001</div>
+        <div class="object-name">[object name]</div>
+        <div class="object-material">[material] — [year]</div>
+      </div>
     </div>
-    <!-- Replace or remove this quote when you have your own words here -->
-    <div class="intro-quote">
-      "your life is your art in addition to the thing that you call your art" — Georgia O'Keeffe
+
+    <div class="object-card" onclick="openObject(1)">
+      <div class="object-img placeholder">
+        <span>photo coming</span>
+      </div>
+      <div class="object-info">
+        <div class="object-num">002</div>
+        <div class="object-name">[object name]</div>
+        <div class="object-material">[material] — [year]</div>
+      </div>
     </div>
+
+    <!-- ADD MORE OBJECTS HERE -->
+
   </div>
 </section>
 
-<section class="nav-section">
-  <div class="nav-grid">
-
-    <!-- 1. The Process -->
-    <a href="l15_process.html" class="nav-btn">
-      <div class="nav-rule"></div>
-      <div class="nav-btn-inner">
-        <div class="nav-front">
-          <div class="nav-eyebrow">Log</div>
-          <div class="nav-title">The Process</div>
-          <div class="nav-sub">shop, sketches, Watson, places</div>
-        </div>
-        <div class="nav-back">
-          <img src="images/the_process.jpg" alt="The Process">
-          <div class="nav-back-overlay"></div>
-          <div class="nav-back-label">The Process</div>
-        </div>
-      </div>
-    </a>
-
-    <!-- 2. l15 Atelier -->
-    <a href="l15_atelier.html" class="nav-btn">
-      <div class="nav-rule"></div>
-      <div class="nav-btn-inner">
-        <div class="nav-front">
-          <div class="nav-eyebrow">Archive</div>
-          <div class="nav-title">l15 Atelier</div>
-          <div class="nav-sub">builds, numbered</div>
-        </div>
-        <div class="nav-back">
-          <img src="images/the_atelier.jpg" alt="l15 Atelier">
-          <div class="nav-back-overlay"></div>
-          <div class="nav-back-label">l15 Atelier</div>
-        </div>
-      </div>
-    </a>
-
-    <!-- 3. Objects -->
-    <a href="l15_objects.html" class="nav-btn">
-      <div class="nav-rule"></div>
-      <div class="nav-btn-inner">
-        <div class="nav-front">
-          <div class="nav-eyebrow">Collection</div>
-          <div class="nav-title">Objects</div>
-          <div class="nav-sub">things made with intention</div>
-        </div>
-        <div class="nav-back">
-          <img src="images/objects.png" alt="Objects">
-          <div class="nav-back-overlay"></div>
-          <div class="nav-back-label">Objects</div>
-        </div>
-      </div>
-    </a>
-
-    <!-- 4. Plans -->
-    <a href="l15_plans.html" class="nav-btn">
-      <div class="nav-rule"></div>
-      <div class="nav-btn-inner">
-        <div class="nav-front">
-          <div class="nav-eyebrow">Plans</div>
-          <div class="nav-title">Plans</div>
-          <div class="nav-sub">dimensions, cut lists, how-to</div>
-        </div>
-        <div class="nav-back">
-          <img src="images/plans.png" alt="Plans">
-          <div class="nav-back-overlay"></div>
-          <div class="nav-back-label">Plans</div>
-        </div>
-      </div>
-    </a>
-
-    <!-- 5. Workshopcore -->
-    <a href="l15_workshopcore.html" class="nav-btn">
-      <div class="nav-rule"></div>
-      <div class="nav-btn-inner">
-        <div class="nav-front">
-          <div class="nav-eyebrow">Reference</div>
-          <div class="nav-title">Workshopcore</div>
-          <div class="nav-sub">tools, materials, methods</div>
-        </div>
-        <div class="nav-back">
-          <img src="images/workshopcore.jpeg" alt="Workshopcore">
-          <div class="nav-back-overlay"></div>
-          <div class="nav-back-label">Workshopcore</div>
-        </div>
-      </div>
-    </a>
-
-    <!-- 6. Book -->
-    <a href="l15_book.html" class="nav-btn">
-      <div class="nav-rule"></div>
-      <div class="nav-btn-inner">
-        <div class="nav-front">
-          <div class="nav-eyebrow">Book</div>
-          <div class="nav-title">I'm Not That Important</div>
-          <div class="nav-sub">a novella</div>
-        </div>
-        <div class="nav-back">
-          <img src="images/the_book.png" alt="I'm Not That Important">
-          <div class="nav-back-overlay"></div>
-          <div class="nav-back-label">I'm Not That Important</div>
-        </div>
-      </div>
-    </a>
-
-    <!-- 7. Dictionary -->
-    <a href="l15_dictionary.html" class="nav-btn">
-      <div class="nav-rule"></div>
-      <div class="nav-btn-inner">
-        <div class="nav-front">
-          <div class="nav-eyebrow">Reference</div>
-          <div class="nav-title">The l15 Dictionary</div>
-          <div class="nav-sub">words that mean something here</div>
-        </div>
-        <div class="nav-back">
-          <img src="images/the_dictionary.png" alt="The l15 Dictionary">
-          <div class="nav-back-overlay"></div>
-          <div class="nav-back-label">The l15 Dictionary</div>
-        </div>
-      </div>
-    </a>
-
-    <!-- 8. Main Characters -->
-    <a href="l15_characters.html" class="nav-btn">
-      <div class="nav-rule"></div>
-      <div class="nav-btn-inner">
-        <div class="nav-front">
-          <div class="nav-eyebrow">Cast</div>
-          <div class="nav-title">Main Characters</div>
-          <div class="nav-sub">the people and the dog</div>
-        </div>
-        <div class="nav-back">
-          <img src="images/watson_hero.jpg" alt="Main Characters">
-          <div class="nav-back-overlay"></div>
-          <div class="nav-back-label">Main Characters</div>
-        </div>
-      </div>
-    </a>
-
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeOverlay(event)">
+  <div class="overlay-card">
+    <button class="overlay-close" onclick="closeObject()">×</button>
+    <div class="overlay-img"><img id="ov-img" src="" alt=""></div>
+    <div class="overlay-content">
+      <div class="overlay-num" id="ov-num"></div>
+      <div class="overlay-name" id="ov-name"></div>
+      <div class="overlay-material" id="ov-material"></div>
+      <div class="overlay-divider"></div>
+      <div class="overlay-desc" id="ov-desc"></div>
+    </div>
   </div>
-</section>
+</div>
 
 <footer class="footer">
   <div class="footer-wm">l<b>15</b></div>
   <div class="footer-loc">THE <span style="text-transform:none">l</span>15 WORKSHOP</div>
 </footer>
 
+<script>
+// =============================================
+// OBJECT ENTRIES
+// Add an entry here for each object card above
+// =============================================
+const objects = [
+  {
+    num: "001",
+    name: "[object name]",
+    material: "[material] — [year]",
+    img: "images/objects.png",
+    desc: "[description of the object — what it is, how it was made, what it means]"
+  },
+  {
+    num: "002",
+    name: "[object name]",
+    material: "[material] — [year]",
+    img: "",
+    desc: "[description]"
+  }
+];
+
+function openObject(i) {
+  const o = objects[i];
+  document.getElementById('ov-num').textContent = o.num;
+  document.getElementById('ov-name').textContent = o.name;
+  document.getElementById('ov-material').textContent = o.material;
+  document.getElementById('ov-desc').textContent = o.desc;
+  const img = document.getElementById('ov-img');
+  img.src = o.img || ''; img.style.display = o.img ? 'block' : 'none';
+  document.getElementById('overlay').classList.add('active');
+}
+function closeObject() { document.getElementById('overlay').classList.remove('active'); }
+function closeOverlay(e) { if (e.target === document.getElementById('overlay')) closeObject(); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeObject(); });
+</script>
 </body>
 </html>
