@@ -2,8 +2,8 @@ backend:
   name: github
   repo: SarPres/l15
   branch: main
-  base_url: https://sveltia-cms-auth.pages.dev
- 
+  auth_type: implicit
+
 media_folder: images
 public_folder: images
  
