@@ -1,0 +1,83 @@
+backend:
+  name: github
+  repo: SarPres/l15
+  branch: main
+ 
+media_folder: images
+public_folder: images
+ 
+collections:
+  - name: process
+    label: Process
+    folder: _posts/process
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: Type, name: type, widget: select, options: [photo, text, photo-full, video], default: photo }
+      - { label: Tag, name: tag, widget: string, hint: "e.g. workshop / watson / sketch / find / place" }
+      - { label: Date, name: date, widget: string, hint: "e.g. July 2026" }
+      - { label: Caption, name: body, widget: text }
+      - { label: Photo, name: photo, widget: image, required: false }
+      - { label: YouTube ID, name: video, widget: string, required: false, hint: "Only for video type — the ID from the YouTube URL" }
+ 
+  - name: book
+    label: "Book — INTI"
+    folder: _posts/book
+    create: true
+    slug: "chapter-{{slug}}"
+    fields:
+      - { label: Chapter number, name: chapter, widget: number }
+      - { label: Chapter title, name: title, widget: string }
+      - { label: Status, name: status, widget: select, options: [empty, fragment, published], default: fragment }
+      - { label: Excerpt, name: excerpt, widget: text, hint: "First line shown in the chapter list" }
+      - { label: Body, name: body, widget: text }
+      - { label: Photo, name: photo, widget: image, required: false }
+ 
+  - name: dictionary
+    label: Dictionary
+    folder: _posts/dictionary
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Term, name: title, widget: string }
+      - { label: Origin, name: origin, widget: string, required: false }
+      - { label: Tag, name: tag, widget: string, required: false }
+      - { label: Definition, name: body, widget: text }
+      - { label: Photo, name: photo, widget: image, required: false }
+ 
+  - name: atelier
+    label: Atelier
+    folder: _posts/atelier
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Material, name: material, widget: string, required: false }
+      - { label: Year, name: year, widget: string }
+      - { label: Status, name: status, widget: select, options: [complete, in progress, planned], default: complete }
+      - { label: Description, name: body, widget: text }
+      - { label: Photo, name: photo, widget: image, required: false }
+      - { label: Cross-reference, name: crossref, widget: string, required: false }
+ 
+  - name: objects
+    label: Objects
+    folder: _posts/objects
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Name, name: title, widget: string }
+      - { label: Material, name: material, widget: string, required: false }
+      - { label: Year, name: year, widget: string, required: false }
+      - { label: Description, name: body, widget: text }
+      - { label: Photo, name: photo, widget: image, required: false }
+ 
+  - name: workshopcore
+    label: Workshopcore
+    folder: _posts/workshopcore
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Page, name: page, widget: select, options: [tools, wood, pla, prints, upgrades, art] }
+      - { label: Name, name: title, widget: string }
+      - { label: Description, name: body, widget: text }
+      - { label: Photo, name: photo, widget: image, required: false }
