@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Process — l15</title>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --yellow: #F5EDD6; --yellow-mid: #E2CFA0; --yellow-dk: #C9AA6A;
+  --red: #7A2509; --red-mid: #B03A18;
+  --charcoal: #2A2720; --offwhite: #F8F5EF; --muted: #8A8070; --page-bg: #EDE8DC;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: var(--charcoal); min-height: 100vh; }
+
+.site-header { position: sticky; top: 0; z-index: 100; background: var(--yellow); border-bottom: 3px solid var(--red); padding: 14px 40px; display: flex; align-items: center; justify-content: space-between; }
+.header-wm { font-family: 'Work Sans', sans-serif; font-weight: 200; font-size: 1.6rem; color: var(--charcoal); letter-spacing: 0.08em; text-decoration: none; }
+.header-wm b { font-weight: 600; }
+.header-back { font-family: 'Work Sans', sans-serif; font-size: 0.82rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); text-decoration: none; }
+.header-back:hover { text-decoration: underline; }
+
+.page-header { background: var(--yellow); border-bottom: 3px solid var(--red); padding: 48px 40px 40px; position: relative; overflow: hidden; }
+.page-header-bg { position: absolute; inset: 0; background-image: url("images/the_process.jpg"); background-size: cover; background-position: center 40%; opacity: 0.13; pointer-events: none; }
+.page-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+.page-title { font-family: 'Work Sans', sans-serif; font-weight: 200; font-size: 2.6rem; color: var(--charcoal); letter-spacing: 0.04em; margin-bottom: 12px; }
+.page-title b { font-weight: 600; }
+.page-desc { font-family: 'Lora', serif; font-style: italic; font-size: 0.95rem; color: var(--muted); max-width: 500px; line-height: 1.6; }
+
+.posts-section { padding: 48px 40px; max-width: 860px; margin: 0 auto; }
+
+/* =======================================================
+   POST CARD — the main repeating unit
+
+   VARIANTS:
+   .post-card              — photo left, text right (default)
+   .post-card.text-only    — text full width
+   .post-card.photo-full   — photo full width, caption below
+   .post-card.video-card   — video left, text right
+   ======================================================= */
+.post-card {
+  background: var(--offwhite);
+  border: 1.5px solid var(--charcoal);
+  margin-bottom: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 260px;
+}
+.post-card.text-only { grid-template-columns: 1fr; min-height: auto; }
+.post-card.photo-full { grid-template-columns: 1fr; min-height: auto; }
+.post-card.video-card { grid-template-columns: 1fr 1fr; min-height: 260px; }
+
+/* media side */
+.post-media { overflow: hidden; }
+.post-media img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 200px; }
+.post-media.photo-full-wrap img { height: 400px; min-height: unset; }
+.post-media video, .post-media iframe { width: 100%; height: 100%; display: block; border: none; min-height: 200px; object-fit: cover; }
+
+/* text side */
+.post-content { padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+.post-tag { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; border-left: 3px solid var(--red); padding-left: 10px; }
+.post-caption { font-family: 'Lora', serif; font-size: 0.95rem; line-height: 1.7; color: var(--charcoal); flex-grow: 1; margin-bottom: 16px; }
+.post-meta { display: flex; justify-content: space-between; align-items: center; }
+.post-date { font-size: 0.72rem; font-weight: 300; color: var(--muted); letter-spacing: 0.08em; }
+.post-wm { font-family: 'Work Sans', sans-serif; font-weight: 200; font-size: 0.85rem; color: var(--muted); letter-spacing: 0.08em; }
+.post-wm b { font-weight: 600; }
+
+.footer { background: var(--charcoal); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; }
+.footer-wm { font-family: 'Work Sans', sans-serif; font-weight: 200; font-size: 1.5rem; color: var(--yellow); letter-spacing: 0.08em; }
+.footer-wm b { font-weight: 600; }
+.footer-loc { font-family: 'Work Sans', sans-serif; font-size: 0.85rem; font-weight: 300; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+
+@media (max-width: 768px) {
+  .post-card, .post-card.video-card { grid-template-columns: 1fr; }
+  .post-media img, .post-media video, .post-media iframe { min-height: 220px; height: 220px; }
+  .posts-section { padding: 28px 16px; }
+  .site-header, .page-header { padding-left: 20px; padding-right: 20px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="header-wm">l<b>15</b></a>
+  <a href="index.html" class="header-back">← back</a>
+</header>
+
+<div class="page-header">
+  <div class="page-header-bg"></div>
+  <div class="page-eyebrow">Log</div>
+  <div class="page-title">The <b>Process</b></div>
+  <div class="page-desc">Watson, the shop, sketches, places, finds — documented as it happens.</div>
+</div>
+
+<section class="posts-section">
+
+<!-- ADD NEW POSTS AT THE TOP — newest first -->
+
+  <div class="post-card">
+    <div class="post-media">
+      <img src="images/process-26-jul-26.png" alt="Bench construction drawing — truss skeleton with hinged lid">
+    </div>
+    <div class="post-content">
+      <div>
+        <div class="post-tag">workshop</div>
+        <div class="post-caption">This week — building a bench for a dining table we haven't picked yet. Partner build. Truss skeleton, lid with a hinge, and hoping to find a cushion that works straight off the shelf. AI image — it's all still in our heads.</div>
+      </div>
+      <div class="post-meta">
+        <div class="post-date">July 2026</div>
+        <div class="post-wm">l<b>15</b></div>
+      </div>
+    </div>
+  </div>
+
+<!-- =======================================================
+     HOW TO ADD A POST — copy the matching block type below
+
+     TYPES:
+     1. Photo + text (default)        → .post-card
+     2. Text only                     → .post-card.text-only
+     3. Full-width photo + caption    → .post-card.photo-full
+     4. Video (YouTube) + text        → .post-card.video-card
+
+     Steps:
+     1. Copy the block
+     2. Replace content with yours
+     3. Save and upload to GitHub
+     ======================================================= -->
+
+<!-- TYPE 1: Photo + text
+  <div class="post-card">
+    <div class="post-media">
+      <img src="images/YOUR-IMAGE.jpg" alt="describe the photo">
+    </div>
+    <div class="post-content">
+      <div>
+        <div class="post-tag">workshop</div>
+        <div class="post-caption">Your caption here.</div>
+      </div>
+      <div class="post-meta">
+        <div class="post-date">July 2026</div>
+        <div class="post-wm">l<b>15</b></div>
+      </div>
+    </div>
+  </div>
+-->
+
+<!-- TYPE 2: Text only
+  <div class="post-card text-only">
+    <div class="post-content">
+      <div>
+        <div class="post-tag">note</div>
+        <div class="post-caption">A thought, a realisation, something that happened.</div>
+      </div>
+      <div class="post-meta">
+        <div class="post-date">July 2026</div>
+        <div class="post-wm">l<b>15</b></div>
+      </div>
+    </div>
+  </div>
+-->
+
+<!-- TYPE 3: Full-width photo
+  <div class="post-card photo-full">
+    <div class="post-media photo-full-wrap">
+      <img src="images/YOUR-IMAGE.jpg" alt="describe the photo">
+    </div>
+    <div class="post-content">
+      <div>
+        <div class="post-tag">place</div>
+        <div class="post-caption">Your caption here.</div>
+      </div>
+      <div class="post-meta">
+        <div class="post-date">July 2026</div>
+        <div class="post-wm">l<b>15</b></div>
+      </div>
+    </div>
+  </div>
+-->
+
+</section>
+
+<footer class="footer">
+  <div class="footer-wm">l<b>15</b></div>
+  <div class="footer-loc">THE <span style="text-transform:none">l</span>15 WORKSHOP</div>
+</footer>
+</body>
+</html>
