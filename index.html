@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>l15</title>
+<link rel="icon" type="image/svg+xml" href="images/l15.svg">
 <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -16,7 +17,8 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
 .top-rule { height: 5px; background: var(--red); width: 100%; }
 .hero { position: relative; width: 100%; height: 85vh; min-height: 520px; overflow: hidden; background: var(--charcoal); }
 .hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 38%; opacity: 0.88; }
-.hero-wordmark { position: absolute; bottom: 36px; left: 40px; font-family: 'Work Sans', sans-serif; font-weight: 200; font-size: 3.2rem; color: var(--yellow); letter-spacing: 0.08em; line-height: 1; }
+.logo-mark { display: inline-block; background-color: var(--yellow); -webkit-mask-image: url('images/l15.svg'); mask-image: url('images/l15.svg'); -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-size: contain; mask-size: contain; -webkit-mask-position: left center; mask-position: left center; }
+.hero-wordmark { position: absolute; bottom: 36px; left: 40px; width: 92px; height: 76px; }
 .hero-wordmark b { font-weight: 600; }
 .hero-tagline { position: absolute; bottom: 44px; right: 40px; font-family: 'Lora', serif; font-style: italic; font-size: 1.15rem; color: var(--yellow); opacity: 0.85; text-align: right; max-width: 260px; line-height: 1.5; }
 .intro-strip { background: var(--yellow); border-top: 3px solid var(--red); border-bottom: 3px solid var(--red); padding: 52px 40px; position: relative; overflow: hidden; }
@@ -27,10 +29,30 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
 .intro-text p + p { margin-top: 0.5em; }
 .intro-quote { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--yellow-dk); font-family: 'Lora', serif; font-style: italic; font-size: 0.95rem; color: var(--muted); max-width: 560px; line-height: 1.7; }
 .nav-section { padding: 52px 40px; background: var(--page-bg); }
-.nav-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto; }
+
+/* SECTIONED LAYOUT WRAPPER */
+.nav-wrap { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px; }
+.section-block { }
+.section-tag { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--yellow-dk); }
+
+/* PRIMARY TIER — Process, Atelier, Book */
+.tier-primary { margin-bottom: 16px; }
+.tier-primary .nav-btn { aspect-ratio: 21 / 7; }
+.tier-primary .nav-eyebrow { font-size: 0.68rem; }
+.tier-primary .nav-title { font-size: 1.5rem; margin-bottom: 5px; }
+.tier-primary .nav-sub { font-size: 0.9rem; -webkit-line-clamp: 2; }
+.tier-primary .nav-front-content { padding: 22px 26px; }
+.tier-primary .nav-back-label { font-size: 1.05rem; left: 26px; bottom: 20px; }
+.tier-primary .nav-rule { width: 5px; }
+
+/* SECONDARY TIER — Workshopcore, Plans, Objects, Dictionary, Characters */
+.tier-secondary-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.tier-secondary-row.single { grid-template-columns: 1fr; }
+.tier-secondary-row.single .nav-btn { aspect-ratio: 21 / 9; }
+.tier-secondary-row .nav-btn { aspect-ratio: 4 / 3; }
 
 /* TILE */
-.nav-btn { position: relative; aspect-ratio: 4/3; overflow: hidden; cursor: pointer; text-decoration: none; display: block; background: var(--charcoal); perspective: 1000px; }
+.nav-btn { position: relative; overflow: hidden; cursor: pointer; text-decoration: none; display: block; background: var(--charcoal); perspective: 1000px; }
 .nav-btn-inner { position: absolute; inset: 0; transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1); transform-style: preserve-3d; }
 .nav-btn:hover .nav-btn-inner { transform: rotateY(180deg); }
 
@@ -51,22 +73,25 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
 .nav-back-label { position: absolute; bottom: 14px; left: 18px; font-family: 'Work Sans', sans-serif; font-weight: 500; font-size: 0.85rem; color: var(--yellow); letter-spacing: 0.04em; }
 
 .footer { background: var(--charcoal); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; }
-.footer-wm { font-family: 'Work Sans', sans-serif; font-weight: 200; font-size: 1.5rem; color: var(--yellow); letter-spacing: 0.08em; }
+.footer-wm { width: 46px; height: 38px; }
 .footer-wm b { font-weight: 600; }
 .footer-loc { font-family: 'Work Sans', sans-serif; font-size: 0.85rem; font-weight: 300; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
 
-@media (max-width: 1024px) { .nav-grid { gap: 10px; } }
+@media (max-width: 1024px) { .tier-primary .nav-btn { aspect-ratio: 16 / 7; } }
 @media (max-width: 700px) {
-  .nav-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .nav-wrap { gap: 36px; }
+  .tier-secondary-row { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .tier-primary .nav-btn { aspect-ratio: 4 / 3; }
+  .tier-primary .nav-title { font-size: 1.1rem; }
+  .tier-secondary-row.single .nav-btn { aspect-ratio: 4 / 3; }
   .nav-section { padding: 28px 16px; }
   .intro-strip { padding: 32px 20px; }
-  .hero-wordmark { font-size: 2.2rem; left: 20px; bottom: 20px; }
+  .hero-wordmark { width: 64px; height: 53px; left: 20px; bottom: 20px; }
   .hero { height: 55vh; min-height: 320px; }
   .hero img { object-position: 30% 25%; }
   .hero-tagline { display: none; }
   .footer { padding: 20px; }
   .footer-loc { font-size: 0.75rem; }
-}
 }
 </style>
 </head>
@@ -76,7 +101,7 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
 
 <section class="hero">
   <img src="images/watson_hero.jpg" alt="Watson">
-  <div class="hero-wordmark">l<b>15</b></div>
+  <div class="hero-wordmark logo-mark"></div>
   <div class="hero-tagline">THE l15 WORKSHOP</div>
 </section>
 
@@ -95,181 +120,205 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
 </section>
 
 <section class="nav-section">
-  <div class="nav-grid">
+  <div class="nav-wrap">
 
-    <!-- 1. The Process -->
-    <a href="l15_process.html" class="nav-btn">
-      <div class="nav-rule"></div>
-      <div class="nav-btn-inner">
-        <div class="nav-front">
-          <img class="nav-front-img" src="images/the_process.jpg" alt="The Process">
-          <div class="nav-front-overlay"></div>
-          <div class="nav-front-content">
-            <div class="nav-eyebrow">Log</div>
-            <div class="nav-title">The Process</div>
-            <div class="nav-sub">sketches, Watson, whatever is going on</div>
+    <!-- NEWS -->
+    <div class="section-block">
+      <div class="section-tag">News</div>
+      <div class="tier-primary">
+        <a href="l15_process.html" class="nav-btn">
+          <div class="nav-rule"></div>
+          <div class="nav-btn-inner">
+            <div class="nav-front">
+              <img class="nav-front-img" src="images/the_process.jpg" alt="The Process">
+              <div class="nav-front-overlay"></div>
+              <div class="nav-front-content">
+                <div class="nav-eyebrow">Log</div>
+                <div class="nav-title">The Process</div>
+                <div class="nav-sub">sketches, Watson, whatever is going on</div>
+              </div>
+            </div>
+            <div class="nav-back">
+              <img src="images/the_process.jpg" alt="The Process">
+              <div class="nav-back-overlay"></div>
+              <div class="nav-back-label">The Process</div>
+            </div>
           </div>
-        </div>
-        <div class="nav-back">
-          <img src="images/the_process.jpg" alt="The Process">
-          <div class="nav-back-overlay"></div>
-          <div class="nav-back-label">The Process</div>
-        </div>
+        </a>
       </div>
-    </a>
+    </div>
 
-    <!-- 2. l15 Atelier -->
-    <a href="l15_atelier.html" class="nav-btn">
-      <div class="nav-rule"></div>
-      <div class="nav-btn-inner">
-        <div class="nav-front">
-          <img class="nav-front-img" src="images/the_atelier.jpg" alt="l15 Atelier">
-          <div class="nav-front-overlay"></div>
-          <div class="nav-front-content">
-            <div class="nav-eyebrow">Archive</div>
-            <div class="nav-title">l15 Atelier</div>
-            <div class="nav-sub">builds, numbered</div>
+    <!-- WOOD -->
+    <div class="section-block">
+      <div class="section-tag">Wood</div>
+      <div class="tier-primary">
+        <a href="l15_atelier.html" class="nav-btn">
+          <div class="nav-rule"></div>
+          <div class="nav-btn-inner">
+            <div class="nav-front">
+              <img class="nav-front-img" src="images/the_atelier.jpg" alt="l15 Atelier">
+              <div class="nav-front-overlay"></div>
+              <div class="nav-front-content">
+                <div class="nav-eyebrow">Archive</div>
+                <div class="nav-title">l15 Atelier</div>
+                <div class="nav-sub">builds, numbered</div>
+              </div>
+            </div>
+            <div class="nav-back">
+              <img src="images/the_atelier.jpg" alt="l15 Atelier">
+              <div class="nav-back-overlay"></div>
+              <div class="nav-back-label">l15 Atelier</div>
+            </div>
           </div>
-        </div>
-        <div class="nav-back">
-          <img src="images/the_atelier.jpg" alt="l15 Atelier">
-          <div class="nav-back-overlay"></div>
-          <div class="nav-back-label">l15 Atelier</div>
-        </div>
+        </a>
       </div>
-    </a>
+      <div class="tier-secondary-row">
+        <a href="l15_workshopcore.html" class="nav-btn">
+          <div class="nav-rule"></div>
+          <div class="nav-btn-inner">
+            <div class="nav-front">
+              <img class="nav-front-img" src="images/workshopcore.jpeg" alt="Workshopcore">
+              <div class="nav-front-overlay"></div>
+              <div class="nav-front-content">
+                <div class="nav-eyebrow">Reference</div>
+                <div class="nav-title">Workshopcore</div>
+                <div class="nav-sub">tools, materials, methods</div>
+              </div>
+            </div>
+            <div class="nav-back">
+              <img src="images/workshopcore.jpeg" alt="Workshopcore">
+              <div class="nav-back-overlay"></div>
+              <div class="nav-back-label">Workshopcore</div>
+            </div>
+          </div>
+        </a>
 
-    <!-- 3. Objects -->
-    <a href="l15_objects.html" class="nav-btn">
-      <div class="nav-rule"></div>
-      <div class="nav-btn-inner">
-        <div class="nav-front">
-          <img class="nav-front-img" src="images/objects.png" alt="Objects">
-          <div class="nav-front-overlay"></div>
-          <div class="nav-front-content">
-            <div class="nav-eyebrow">Collection</div>
-            <div class="nav-title">Objects</div>
-            <div class="nav-sub">not yet products</div>
+        <a href="l15_plans.html" class="nav-btn">
+          <div class="nav-rule"></div>
+          <div class="nav-btn-inner">
+            <div class="nav-front">
+              <img class="nav-front-img" src="images/plans.png" alt="Plans">
+              <div class="nav-front-overlay"></div>
+              <div class="nav-front-content">
+                <div class="nav-eyebrow">Plans</div>
+                <div class="nav-title">Plans</div>
+                <div class="nav-sub">dimensions, cut lists, how-to</div>
+              </div>
+            </div>
+            <div class="nav-back">
+              <img src="images/plans.png" alt="Plans">
+              <div class="nav-back-overlay"></div>
+              <div class="nav-back-label">Plans</div>
+            </div>
           </div>
-        </div>
-        <div class="nav-back">
-          <img src="images/objects.png" alt="Objects">
-          <div class="nav-back-overlay"></div>
-          <div class="nav-back-label">Objects</div>
-        </div>
+        </a>
       </div>
-    </a>
+    </div>
 
-    <!-- 4. Plans -->
-    <a href="l15_plans.html" class="nav-btn">
-      <div class="nav-rule"></div>
-      <div class="nav-btn-inner">
-        <div class="nav-front">
-          <img class="nav-front-img" src="images/plans.png" alt="Plans">
-          <div class="nav-front-overlay"></div>
-          <div class="nav-front-content">
-            <div class="nav-eyebrow">Plans</div>
-            <div class="nav-title">Plans</div>
-            <div class="nav-sub">dimensions, cut lists, how-to</div>
+    <!-- OBJECTS -->
+    <div class="section-block">
+      <div class="section-tag">Objects</div>
+      <div class="tier-secondary-row single">
+        <a href="l15_objects.html" class="nav-btn">
+          <div class="nav-rule"></div>
+          <div class="nav-btn-inner">
+            <div class="nav-front">
+              <img class="nav-front-img" src="images/objects.png" alt="Objects">
+              <div class="nav-front-overlay"></div>
+              <div class="nav-front-content">
+                <div class="nav-eyebrow">Collection</div>
+                <div class="nav-title">Objects</div>
+                <div class="nav-sub">not yet products</div>
+              </div>
+            </div>
+            <div class="nav-back">
+              <img src="images/objects.png" alt="Objects">
+              <div class="nav-back-overlay"></div>
+              <div class="nav-back-label">Objects</div>
+            </div>
           </div>
-        </div>
-        <div class="nav-back">
-          <img src="images/plans.png" alt="Plans">
-          <div class="nav-back-overlay"></div>
-          <div class="nav-back-label">Plans</div>
-        </div>
+        </a>
       </div>
-    </a>
+    </div>
 
-    <!-- 5. Workshopcore -->
-    <a href="l15_workshopcore.html" class="nav-btn">
-      <div class="nav-rule"></div>
-      <div class="nav-btn-inner">
-        <div class="nav-front">
-          <img class="nav-front-img" src="images/workshopcore.jpeg" alt="Workshopcore">
-          <div class="nav-front-overlay"></div>
-          <div class="nav-front-content">
-            <div class="nav-eyebrow">Reference</div>
-            <div class="nav-title">Workshopcore</div>
-            <div class="nav-sub">tools, materials, methods</div>
+    <!-- READ -->
+    <div class="section-block">
+      <div class="section-tag">Read</div>
+      <div class="tier-primary">
+        <a href="l15_book.html" class="nav-btn">
+          <div class="nav-rule"></div>
+          <div class="nav-btn-inner">
+            <div class="nav-front">
+              <img class="nav-front-img" src="images/the_book.png" alt="I'm Not That Important">
+              <div class="nav-front-overlay"></div>
+              <div class="nav-front-content">
+                <div class="nav-eyebrow">Book</div>
+                <div class="nav-title">I'm Not That Important</div>
+                <div class="nav-sub">creative writing project</div>
+              </div>
+            </div>
+            <div class="nav-back">
+              <img src="images/the_book.png" alt="I'm Not That Important">
+              <div class="nav-back-overlay"></div>
+              <div class="nav-back-label">I'm Not That Important</div>
+            </div>
           </div>
-        </div>
-        <div class="nav-back">
-          <img src="images/workshopcore.jpeg" alt="Workshopcore">
-          <div class="nav-back-overlay"></div>
-          <div class="nav-back-label">Workshopcore</div>
-        </div>
+        </a>
       </div>
-    </a>
+      <div class="tier-secondary-row single">
+        <a href="l15_dictionary.html" class="nav-btn">
+          <div class="nav-rule"></div>
+          <div class="nav-btn-inner">
+            <div class="nav-front">
+              <img class="nav-front-img" src="images/the_dictionary.png" alt="The l15 Dictionary">
+              <div class="nav-front-overlay"></div>
+              <div class="nav-front-content">
+                <div class="nav-eyebrow">Reference</div>
+                <div class="nav-title">The l15 Dictionary</div>
+                <div class="nav-sub">words that show up here</div>
+              </div>
+            </div>
+            <div class="nav-back">
+              <img src="images/the_dictionary.png" alt="The l15 Dictionary">
+              <div class="nav-back-overlay"></div>
+              <div class="nav-back-label">The l15 Dictionary</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
 
-    <!-- 6. Book -->
-    <a href="l15_book.html" class="nav-btn">
-      <div class="nav-rule"></div>
-      <div class="nav-btn-inner">
-        <div class="nav-front">
-          <img class="nav-front-img" src="images/the_book.png" alt="I'm Not That Important">
-          <div class="nav-front-overlay"></div>
-          <div class="nav-front-content">
-            <div class="nav-eyebrow">Book</div>
-            <div class="nav-title">I'm Not That Important</div>
-            <div class="nav-sub">creative writing project</div>
+    <!-- ABOUT (Main Characters) -->
+    <div class="section-block">
+      <div class="section-tag">About</div>
+      <div class="tier-secondary-row single">
+        <a href="l15_characters.html" class="nav-btn">
+          <div class="nav-rule"></div>
+          <div class="nav-btn-inner">
+            <div class="nav-front">
+              <img class="nav-front-img" src="images/watson_hero.jpg" alt="Main Characters">
+              <div class="nav-front-overlay"></div>
+              <div class="nav-front-content">
+                <div class="nav-eyebrow">Cast</div>
+                <div class="nav-title">Main Characters</div>
+                <div class="nav-sub">the people and dog</div>
+              </div>
+            </div>
+            <div class="nav-back">
+              <img src="images/watson_hero.jpg" alt="Main Characters">
+              <div class="nav-back-overlay"></div>
+              <div class="nav-back-label">Main Characters</div>
+            </div>
           </div>
-        </div>
-        <div class="nav-back">
-          <img src="images/the_book.png" alt="I'm Not That Important">
-          <div class="nav-back-overlay"></div>
-          <div class="nav-back-label">I'm Not That Important</div>
-        </div>
+        </a>
       </div>
-    </a>
-
-    <!-- 7. Dictionary -->
-    <a href="l15_dictionary.html" class="nav-btn">
-      <div class="nav-rule"></div>
-      <div class="nav-btn-inner">
-        <div class="nav-front">
-          <img class="nav-front-img" src="images/the_dictionary.png" alt="The l15 Dictionary">
-          <div class="nav-front-overlay"></div>
-          <div class="nav-front-content">
-            <div class="nav-eyebrow">Reference</div>
-            <div class="nav-title">The l15 Dictionary</div>
-            <div class="nav-sub">words that show up here</div>
-          </div>
-        </div>
-        <div class="nav-back">
-          <img src="images/the_dictionary.png" alt="The l15 Dictionary">
-          <div class="nav-back-overlay"></div>
-          <div class="nav-back-label">The l15 Dictionary</div>
-        </div>
-      </div>
-    </a>
-
-    <!-- 8. Main Characters -->
-    <a href="l15_characters.html" class="nav-btn">
-      <div class="nav-rule"></div>
-      <div class="nav-btn-inner">
-        <div class="nav-front">
-          <img class="nav-front-img" src="images/watson_hero.jpg" alt="Main Characters">
-          <div class="nav-front-overlay"></div>
-          <div class="nav-front-content">
-            <div class="nav-eyebrow">Cast</div>
-            <div class="nav-title">Main Characters</div>
-            <div class="nav-sub">the people and dog</div>
-          </div>
-        </div>
-        <div class="nav-back">
-          <img src="images/watson_hero.jpg" alt="Main Characters">
-          <div class="nav-back-overlay"></div>
-          <div class="nav-back-label">Main Characters</div>
-        </div>
-      </div>
-    </a>
+    </div>
 
   </div>
 </section>
 
 <footer class="footer">
-  <div class="footer-wm">l<b>15</b></div>
+  <div class="footer-wm logo-mark"></div>
   <div class="footer-loc">THE <span style="text-transform:none">l</span>15 WORKSHOP</div>
 </footer>
 
