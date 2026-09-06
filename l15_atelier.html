@@ -114,9 +114,9 @@ body { background: var(--charcoal); font-family: 'Work Sans', sans-serif; color:
     <div class="build-title">Hallway Wardrobe</div>
     <div class="build-meta">plywood — 2026</div>
     <img class="build-image" src="images/atelier_wardrobe.png" alt="Hallway Wardrobe">
-    <div class="build-body">Proportions good. Construction not-so-good. Don't make it like this.</div>
+    <div class="build-body">Don't make it like this.</div>
     <div class="build-footer">
-      <span class="build-tag">→ [Workshopcore - 3D printed brackets]</span>
+      <span class="build-tag">→ [Workshopcore - 3D printed experiments]</span>
       <span class="build-status complete">complete</span>
     </div>
     <div class="build-expand-hint">expand →</div>
@@ -133,6 +133,7 @@ body { background: var(--charcoal); font-family: 'Work Sans', sans-serif; color:
     <div class="overlay-meta" id="ov-meta"></div>
     <div class="overlay-divider"></div>
     <img class="overlay-img" id="ov-img" src="" alt="">
+    <img class="overlay-img" id="ov-img2" src="" alt="">
     <div class="overlay-body" id="ov-body"></div>
     <div class="overlay-tag" id="ov-tag"></div>
   </div>
@@ -153,6 +154,7 @@ const builds = [
     title: "We're building a kitchen banquette with storage!",
     meta: "[material] — [year]",
     img: "images/the_placeholder.png",
+    img2: "images/the_placeholder_2.png",
     body: "Placeholder Watson",
     tag: "..."
   },
@@ -168,9 +170,9 @@ const builds = [
     num: "A-001",
     title: "Hallway Wardrobe",
     meta: "plywood mix — 2026",
-    img: "images/a001bracket.jpg",
-    body: "3D printed brackets to hold shelves.",
-    tag: "→ Workshopcore - 3D printed brackets"
+    img: "images/atelier_wardrobe.png",
+    body: "Proportions good. Construction not-so-good.",
+    tag: "→ Workshopcore"
   }
 
 ];
@@ -181,8 +183,13 @@ function openBuild(i) {
   document.getElementById('ov-meta').textContent = b.meta;
   document.getElementById('ov-body').textContent = b.body;
   document.getElementById('ov-tag').textContent = b.tag;
+
   const img = document.getElementById('ov-img');
   if (b.img) { img.src = b.img; img.classList.add('visible'); } else { img.classList.remove('visible'); }
+
+  const img2 = document.getElementById('ov-img2');
+  if (b.img2) { img2.src = b.img2; img2.classList.add('visible'); } else { img2.classList.remove('visible'); }
+
   document.getElementById('overlay').classList.add('active');
 }
 function closeBuild() { document.getElementById('overlay').classList.remove('active'); }
