@@ -82,7 +82,7 @@ body { background: var(--charcoal); font-family: 'Work Sans', sans-serif; color:
      ======================================================= -->
 
   
-  <div class="build-entry" onclick="openBuild(2)">
+  <div class="build-entry" onclick="openBuild(0)">
     <div class="build-num">A-003</div>
     <div class="build-title">[next build]</div>
     <div class="build-meta">[material] — [year]</div>
@@ -108,7 +108,7 @@ body { background: var(--charcoal); font-family: 'Work Sans', sans-serif; color:
   </div>
   <div class="build-divider"></div>
 
-    <div class="build-entry" onclick="openBuild(0)">
+    <div class="build-entry" onclick="openBuild(2)">
     <div class="build-num">A-001</div>
     <div class="build-title">Hallway Wardrobe</div>
     <div class="build-meta">plywood — 2026</div>
@@ -148,13 +148,13 @@ body { background: var(--charcoal); font-family: 'Work Sans', sans-serif; color:
 // ATELIER ENTRIES — add one object per build entry above
 // =======================================================
 const builds = [
-  {
-    num: "A-001",
-    title: "Hallway Wardrobe",
-    meta: "plywood mix — 2026",
-    img: "images/atelier_wardrobe.png",
-    body: "Proportions good. Construction not-so-good.",
-    tag: "→ Workshopcore"
+    {
+    num: "A-003",
+    title: "We're building a kitchen banquette with storage!",
+    meta: "[material] — [year]",
+    img: "images/the_placeholder.png",
+    body: "Placeholder Watson",
+    tag: ""
   },
   {
     num: "A-002",
@@ -164,14 +164,15 @@ const builds = [
     body: "Build from workshop school with pops",
     tag: "..."
   },
-  {
-    num: "A-003",
-    title: "We're building a kitchen banquette with storage!",
-    meta: "[material] — [year]",
-    img: "images/the_placeholder.png",
-    body: "Placeholder Watson",
-    tag: ""
+    {
+    num: "A-001",
+    title: "Hallway Wardrobe",
+    meta: "plywood mix — 2026",
+    img: "images/atelier_wardrobe.png",
+    body: "Proportions good. Construction not-so-good.",
+    tag: "→ Workshopcore"
   }
+
 ];
 function openBuild(i) {
   const b = builds[i];
