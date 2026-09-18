@@ -79,6 +79,8 @@ body { background: var(--charcoal); font-family: 'Work Sans', sans-serif; color:
      HOW TO ADD A BUILD
      Copy this block. Increment 001 → 002 etc.
      Change onclick number. Add entry to builds[] in JS below.
+  
+     <span class="build-status">in progress</span>
      ======================================================= -->
 
   <div class="build-entry" onclick="openBuild(0)">
@@ -89,7 +91,7 @@ body { background: var(--charcoal); font-family: 'Work Sans', sans-serif; color:
     <div class="build-body">Placeholder Watson</div>
     <div class="build-footer">
       <span class="build-tag">→ [cross-reference]</span>
-      <span class="build-status">in progress</span>
+      <span class="build-status">complete</span>
     </div>
     <div class="build-expand-hint">expand →</div>
   </div>
@@ -114,7 +116,7 @@ body { background: var(--charcoal); font-family: 'Work Sans', sans-serif; color:
     <div class="build-title">Hallway Wardrobe</div>
     <div class="build-meta">plywood — 2026</div>
     <img class="build-image" src="images/a001bracket.jpg" alt="Hallway Wardrobe">
-    <div class="build-body">Proportions good. Construction not-so-good. Don't make it like this.</div>
+    <div class="build-body">3D printed brackets.</div>
     <div class="build-footer">
       <span class="build-tag">→ [Plans - 3D printed brackets]</span>
       <span class="build-status complete">complete</span>
@@ -154,7 +156,7 @@ const builds = [
     title: "We built a kitchen banquette with storage!",
     meta: "[material] — [year]",
     img: "images/the_atelier.png",
-    body: "Placeholder Watson",
+    body: "Installed",
     tag: "..."
   },
   {
@@ -171,7 +173,7 @@ const builds = [
     meta: "plywood mix — 2026",
     img: "images/atelier_wardrobe.png",
     img2: "images/a001bracket2.jpg",
-    body: "3D printed brackets.",
+    body: "Proportions good. Construction not-so-good. Don't make it like this.",
     tag: "→ Plans"
   }
 
