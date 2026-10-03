@@ -45,7 +45,7 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
 .tier-primary .nav-back-label { font-size: 1.05rem; left: 26px; bottom: 20px; }
 .tier-primary .nav-rule { width: 5px; }
 
-/* SECONDARY TIER — Workshopcore, Plans, Objects, Dictionary, Characters */
+/* SECONDARY TIER — Workshopcore, Plans, Objects, Dictionary, Characters, Gallery */
 .tier-secondary-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 .tier-secondary-row.single { grid-template-columns: 1fr; }
 .tier-secondary-row.single .nav-btn { aspect-ratio: 21 / 9; }
@@ -241,6 +241,32 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
       </div>
     </div>
 
+    <!-- GALLERY -->
+    <div class="section-block">
+      <div class="section-tag">Gallery</div>
+      <div class="tier-secondary-row single">
+        <a href="l15_gallery.html" class="nav-btn">
+          <div class="nav-rule"></div>
+          <div class="nav-btn-inner">
+            <div class="nav-front">
+              <img class="nav-front-img" src="images/the_placeholder.png" alt="Gallery">
+              <div class="nav-front-overlay"></div>
+              <div class="nav-front-content">
+                <div class="nav-eyebrow">Starred</div>
+                <div class="nav-title">Gallery</div>
+                <div class="nav-sub">favorite photos, no reason needed</div>
+              </div>
+            </div>
+            <div class="nav-back">
+              <img src="images/the_placeholder.png" alt="Gallery">
+              <div class="nav-back-overlay"></div>
+              <div class="nav-back-label">Gallery</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
     <!-- READ -->
     <div class="section-block">
       <div class="section-tag">Read</div>
@@ -321,6 +347,5 @@ body { background: var(--page-bg); font-family: 'Work Sans', sans-serif; color: 
   <div class="footer-wm logo-mark"></div>
   <div class="footer-loc">THE <span style="text-transform:none">l</span>15 WORKSHOP</div>
 </footer>
-
 </body>
 </html>
