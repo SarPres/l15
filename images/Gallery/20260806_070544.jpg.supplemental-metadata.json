@@ -1,0 +1,33 @@
+{
+  "title": "20260806_070544.jpg",
+  "description": "",
+  "imageViews": "0",
+  "creationTime": {
+    "timestamp": "1791099317",
+    "formatted": "Oct 4, 2026, 7:35:17 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1785992744",
+    "formatted": "Aug 6, 2026, 5:05:44 AM UTC"
+  },
+  "geoData": {
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "favorited": true,
+  "url": "https://photos.google.com/photo/AF1QipMaNOrdrYoLsZCAzJsA1Il5cjrU65vr3hfuqHiT",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  },
+  "appSource": {
+    "androidPackageName": "com.sec.android.app.camera"
+  }
+}

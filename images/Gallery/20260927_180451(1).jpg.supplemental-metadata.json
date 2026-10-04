@@ -1,0 +1,33 @@
+{
+  "title": "20260927_180451(1).jpg",
+  "description": "",
+  "imageViews": "0",
+  "creationTime": {
+    "timestamp": "1791019139",
+    "formatted": "Oct 3, 2026, 9:18:59 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1790525091",
+    "formatted": "Sep 27, 2026, 4:04:51 PM UTC"
+  },
+  "geoData": {
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "favorited": true,
+  "url": "https://photos.google.com/photo/AF1QipMEm4M5R0jMSIcElQYYQ2OEJ7QHxWYrJnMr2C-8",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  },
+  "appSource": {
+    "androidPackageName": "com.sec.android.mimage.photoretouching"
+  }
+}

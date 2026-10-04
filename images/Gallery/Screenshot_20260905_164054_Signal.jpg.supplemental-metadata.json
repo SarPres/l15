@@ -1,0 +1,33 @@
+{
+  "title": "Screenshot_20260905_164054_Signal.jpg",
+  "description": "",
+  "imageViews": "0",
+  "creationTime": {
+    "timestamp": "1791021490",
+    "formatted": "Oct 3, 2026, 9:58:10 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1788619254",
+    "formatted": "Sep 5, 2026, 2:40:54 PM UTC"
+  },
+  "geoData": {
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "favorited": true,
+  "url": "https://photos.google.com/photo/AF1QipN8S1tNNge4Q393Aqz9tlQ2LzcB8lVZ1EoipcqQ",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  },
+  "appSource": {
+    "androidPackageName": "com.android.systemui"
+  }
+}

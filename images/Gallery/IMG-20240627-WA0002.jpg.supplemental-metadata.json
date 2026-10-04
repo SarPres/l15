@@ -1,0 +1,33 @@
+{
+  "title": "IMG-20240627-WA0002.jpg",
+  "description": "",
+  "imageViews": "0",
+  "creationTime": {
+    "timestamp": "1791020956",
+    "formatted": "Oct 3, 2026, 9:49:16 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1789656072",
+    "formatted": "Sep 17, 2026, 2:41:12 PM UTC"
+  },
+  "geoData": {
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "favorited": true,
+  "url": "https://photos.google.com/photo/AF1QipMcAMwgP8ETpVO-5pg5Yk2GsCMIzPGcAoS620sW",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": "WhatsApp"
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  },
+  "appSource": {
+    "androidPackageName": "com.whatsapp"
+  }
+}

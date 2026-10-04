@@ -1,0 +1,33 @@
+{
+  "title": "20260927_175820.jpg",
+  "description": "",
+  "imageViews": "0",
+  "creationTime": {
+    "timestamp": "1791019210",
+    "formatted": "Oct 3, 2026, 9:20:10 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1790524700",
+    "formatted": "Sep 27, 2026, 3:58:20 PM UTC"
+  },
+  "geoData": {
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "favorited": true,
+  "url": "https://photos.google.com/photo/AF1QipNsjil6gShuX5zTgwrKX6Wncqv3nfwPQnzqmjB3",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  },
+  "appSource": {
+    "androidPackageName": "com.sec.android.app.camera"
+  }
+}

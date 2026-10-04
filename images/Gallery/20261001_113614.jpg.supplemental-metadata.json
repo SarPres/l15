@@ -1,0 +1,33 @@
+{
+  "title": "20261001_113614.jpg",
+  "description": "",
+  "imageViews": "0",
+  "creationTime": {
+    "timestamp": "1791012820",
+    "formatted": "Oct 3, 2026, 7:33:40 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1790847374",
+    "formatted": "Oct 1, 2026, 9:36:14 AM UTC"
+  },
+  "geoData": {
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "favorited": true,
+  "url": "https://photos.google.com/photo/AF1QipNZr23R62Qy7pFucSRA2WLIpc3qBhdaqVOcf8gX",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  },
+  "appSource": {
+    "androidPackageName": "com.sec.android.app.camera"
+  }
+}

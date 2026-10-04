@@ -1,0 +1,33 @@
+{
+  "title": "20260822_132458.jpg",
+  "description": "",
+  "imageViews": "0",
+  "creationTime": {
+    "timestamp": "1791030337",
+    "formatted": "Oct 3, 2026, 12:25:37 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1787397899",
+    "formatted": "Aug 22, 2026, 11:24:59 AM UTC"
+  },
+  "geoData": {
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "favorited": true,
+  "url": "https://photos.google.com/photo/AF1QipMOYT3EN4iHdVLz1F89o-e0AifX3xjel0__slsk",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  },
+  "appSource": {
+    "androidPackageName": "com.sec.android.app.camera"
+  }
+}

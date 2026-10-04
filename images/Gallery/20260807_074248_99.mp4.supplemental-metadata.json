@@ -1,0 +1,33 @@
+{
+  "title": "20260807_074248_99.mp4",
+  "description": "",
+  "imageViews": "0",
+  "creationTime": {
+    "timestamp": "1791099146",
+    "formatted": "Oct 4, 2026, 7:32:26 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1786081380",
+    "formatted": "Aug 7, 2026, 5:43:00 AM UTC"
+  },
+  "geoData": {
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "favorited": true,
+  "url": "https://photos.google.com/photo/AF1QipO_TY1y-gb9tyyuC8-l36VA5RDmCf4vgc7CHA2H",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  },
+  "appSource": {
+    "androidPackageName": "com.sec.android.app.camera"
+  }
+}
