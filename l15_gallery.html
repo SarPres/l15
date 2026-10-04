@@ -27,8 +27,9 @@ body { background: var(--charcoal); font-family: 'Work Sans', sans-serif; color:
 
 .gallery-section { padding: 48px 32px 80px; max-width: 1400px; margin: 0 auto; }
 .masonry { columns: 4 240px; column-gap: 14px; }
-.masonry img, .masonry video { width: 100%; display: block; margin-bottom: 14px; break-inside: avoid; cursor: pointer; border: 1px solid rgba(197,170,106,0.15); transition: opacity 0.2s; }
-.masonry img:hover, .masonry video:hover { opacity: 0.85; }
+.masonry img, .masonry video { width: 100%; display: block; margin-bottom: 14px; break-inside: avoid; cursor: pointer; opacity: 0; transition: opacity 0.5s ease, filter 0.2s ease; }
+.masonry img.loaded, .masonry video.loaded { opacity: 1; }
+.masonry img:hover, .masonry video:hover { filter: brightness(1.08); }
 .masonry .video-wrap { position: relative; margin-bottom: 14px; break-inside: avoid; }
 .masonry .video-wrap video { margin-bottom: 0; }
 .masonry .video-badge { position: absolute; top: 8px; right: 8px; background: rgba(42,39,32,0.75); color: var(--yellow); font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 7px; pointer-events: none; }
@@ -48,8 +49,10 @@ body { background: var(--charcoal); font-family: 'Work Sans', sans-serif; color:
 .footer-loc { font-family: 'Work Sans', sans-serif; font-size: 0.85rem; font-weight: 300; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
 
 @media (max-width: 768px) {
-  .masonry { columns: 2 160px; }
-  .site-header, .page-title-block, .gallery-section { padding-left: 20px; padding-right: 20px; }
+  .masonry { columns: 2 130px; column-gap: 5px; }
+  .masonry img, .masonry video, .masonry .video-wrap { margin-bottom: 5px; }
+  .gallery-section { padding: 5px 5px 60px; }
+  .site-header, .page-title-block { padding-left: 20px; padding-right: 20px; }
   .page-title { font-size: 2rem; }
 }
 </style>
@@ -115,6 +118,7 @@ async function loadGallery() {
         vid.loop = true;
         vid.playsInline = true;
         vid.preload = 'metadata';
+        vid.addEventListener('loadeddata', () => vid.classList.add('loaded'));
         vid.addEventListener('mouseenter', () => vid.play());
         vid.addEventListener('mouseleave', () => vid.pause());
         vid.onclick = () => openMedia(f.download_url, label, true);
@@ -129,6 +133,7 @@ async function loadGallery() {
         img.src = f.download_url;
         img.alt = label;
         img.loading = 'lazy';
+        img.addEventListener('load', () => img.classList.add('loaded'));
         img.onclick = () => openMedia(f.download_url, label, false);
         grid.appendChild(img);
       }
